@@ -1,11 +1,131 @@
-.features {
-  display: flex;
-  align-items: center;
-  padding: 2rem 0;
-  width: 100%;
+﻿.features {
+  padding: 4.5rem 0 5rem;
+  background: linear-gradient(180deg, transparent 0%, rgba(255, 250, 244, 0.28) 100%);
 }
 
-.featureSvg {
-  height: 200px;
-  width: 200px;
+[data-theme='dark'] .features {
+  background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.02) 100%);
+}
+
+.header {
+  max-width: 760px;
+  margin-bottom: 1.7rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.45rem;
+  color: var(--ifm-color-primary);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.2;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  min-height: 290px;
+  padding: 1.4rem;
+  border-radius: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, #1c1917, #14110f);
+  color: #f7f1ea;
+  box-shadow: 0 22px 48px rgba(10, 10, 10, 0.24);
+}
+
+.paper {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.ink {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.accent {
+  border-color: rgba(147, 197, 253, 0.16);
+  background: linear-gradient(180deg, #243252 0%, #161f33 100%);
+  color: #eff6ff;
+}
+
+.cardMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2.1rem;
+}
+
+.cardId {
+  font-family: var(--ifm-heading-font-family);
+  font-size: 1.95rem;
+  line-height: 1;
+  color: #93c5fd;
+}
+
+.accent .cardId {
+  color: #bfdbfe;
+}
+
+.cardLabel {
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(255, 250, 244, 0.08);
+  color: #bfdbfe;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.accent .cardLabel {
+  background: rgba(255, 255, 255, 0.08);
+  color: #dbeafe;
+}
+
+.cardTitle {
+  margin-bottom: 0.75rem;
+  font-size: 1.55rem;
+}
+
+.cardDescription {
+  margin: 0 0 1.5rem;
+  color: rgba(247, 241, 234, 0.82);
+  line-height: 1.8;
+}
+
+.accent .cardDescription {
+  color: rgba(239, 246, 255, 0.82);
+}
+
+.cardLink {
+  margin-top: auto;
+  width: fit-content;
+  color: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+
+.cardLink:hover {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 996px) {
+  .features {
+    padding: 3.5rem 0 4rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }

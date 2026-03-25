@@ -37,18 +37,17 @@ const config: Config = {
       'classic',
       {
         docs: {
+          path: '.',
+          include: [
+            'intro.md',
+            'handbook/**/*.{md,mdx}',
+            'history/**/*.{md,mdx}',
+            'devdojo/**/*.{md,mdx}',
+            'news/**/*.{md,mdx}',
+          ],
           sidebarPath: './sidebars.ts',
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -69,12 +68,59 @@ const config: Config = {
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'mainSidebar',
+          type: 'dropdown',
           position: 'left',
-          label: 'ガイド',
+          label: '参加の手引き',
+          items: [
+            {
+              label: '申し込み方法',
+              to: '/docs/handbook/registration',
+            },
+            {
+              label: '当日のスケジュール',
+              to: '/docs/handbook/schedule',
+            },
+          ],
         },
-        {to: '/blog', label: '最新情報', position: 'left'},
+        {
+          type: 'dropdown',
+          position: 'left',
+          label: 'ハッカソン履歴',
+          items: [
+            {
+              label: '2024 春ハッカソン',
+              to: '/docs/history/2024/event-1',
+            },
+            {
+              label: '2024 夏ハッカソン',
+              to: '/docs/history/2024/event-2',
+            },
+            {
+              label: '2025 春ハッカソン',
+              to: '/docs/history/2025/hackathon-spring',
+            },
+          ],
+        },
+        {
+          type: 'dropdown',
+          position: 'left',
+          label: 'DevDojo',
+          items: [
+            {
+              label: 'GitHub・Git 基礎',
+              to: '/docs/devdojo/github-git/basics',
+            },
+            {
+              label: 'チーム開発の流れ',
+              to: '/docs/devdojo/github-git/workflow',
+            },
+            {
+              label: '生成AI 入門',
+              to: '/docs/devdojo/generative-ai/getting-started',
+            },
+          ],
+        },
+        {to: '/docs/news/spring-announcement', label: '最新情報', position: 'left'},
       ],
     },
     footer: {
@@ -94,11 +140,11 @@ const config: Config = {
           ],
         },
         {
-          title: '最新情報',
+          title: 'お知らせ',
           items: [
             {
-              label: 'お知らせ一覧',
-              to: '/blog',
+              label: '開催案内',
+              to: '/docs/news/spring-announcement',
             },
           ],
         },

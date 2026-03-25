@@ -1,58 +1,302 @@
-﻿/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
+/**
+ * Homepage layout.
  */
 
-.heroBanner {
-  padding: 5rem 0 4rem;
-  text-align: center;
+.heroSection {
   position: relative;
-  overflow: hidden;
-  background: radial-gradient(1200px 400px at 50% -10%, rgba(45, 212, 191, 0.35), transparent 70%),
-    linear-gradient(135deg, #0f172a 0%, #0b3b3a 55%, #0f766e 100%);
-  color: #f8fafc;
+  padding: 3.8rem 0 3rem;
 }
 
-.heroKicker {
-  letter-spacing: 0.2em;
+.heroSection::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(37, 99, 235, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 92%);
+  pointer-events: none;
+}
+
+.heroGrid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.85fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.introPanel {
+  padding: 0.4rem 0 0;
+}
+
+.labelRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.1rem;
+}
+
+.sectionLabel {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.38rem 0.72rem;
+  border: 1px solid rgba(33, 29, 26, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 250, 244, 0.8);
+  font-size: 0.76rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-size: 0.85rem;
-  margin-bottom: 0.75rem;
-  opacity: 0.8;
+}
+
+.termChip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.38rem 0.72rem;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--ifm-color-primary-dark);
+  font-size: 0.8rem;
+  font-weight: 700;
 }
 
 .heroTitle {
-  font-size: clamp(2.2rem, 3vw, 3.2rem);
+  max-width: 10ch;
+  margin: 0 0 1rem;
+  font-size: clamp(3.1rem, 6.3vw, 5.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+.heroLead {
+  max-width: 56ch;
+  margin: 0 0 1.7rem;
+  font-size: 1.04rem;
+  line-height: 1.9;
+  color: rgba(33, 29, 26, 0.78);
+}
+
+.actionRow {
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.8rem;
+}
+
+.primaryLink,
+.secondaryLink,
+.eventPrimary,
+.eventSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.8rem 1.15rem;
+  border-radius: 16px;
+  text-decoration: none;
+  font-weight: 700;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.primaryLink {
+  background: var(--ifm-color-primary);
+  color: #fffaf4;
+  box-shadow: 0 16px 36px rgba(37, 99, 235, 0.18);
+}
+
+.primaryLink:hover {
+  color: #fffaf4;
+  transform: translateY(-1px);
+}
+
+.secondaryLink {
+  border: 1px solid rgba(33, 29, 26, 0.14);
+  background: rgba(255, 250, 244, 0.78);
+  color: var(--ifm-font-color-base);
+}
+
+.secondaryLink:hover {
+  color: var(--ifm-font-color-base);
+  border-color: rgba(33, 29, 26, 0.24);
+}
+
+.noteGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.noteCard {
+  min-height: 130px;
+  padding: 1rem;
+  border-radius: 20px;
+  border: 1px solid rgba(33, 29, 26, 0.08);
+  background: rgba(255, 250, 244, 0.86);
+  box-shadow: 0 18px 42px rgba(33, 29, 26, 0.05);
+}
+
+.noteIndex {
+  margin: 0 0 0.6rem;
+  color: var(--ifm-color-primary);
+  font-family: var(--ifm-heading-font-family);
+  font-size: 1.6rem;
+}
+
+.noteText {
+  margin: 0;
+  line-height: 1.7;
+  color: rgba(33, 29, 26, 0.76);
+}
+
+.eventPanel {
+  padding: 1.45rem;
+  border-radius: 28px;
+  background: #1a1817;
+  color: #f7f1ea;
+  box-shadow: 0 26px 60px rgba(22, 20, 19, 0.2);
+}
+
+.eventTopRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
   margin-bottom: 1rem;
 }
 
-.heroSubtitle {
-  font-size: 1.1rem;
-  max-width: 720px;
-  margin: 0 auto 2rem;
-  opacity: 0.9;
+.eventEyebrow {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.36rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255, 250, 244, 0.08);
+  color: #bfdbfe;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
-.heroNote {
-  margin-top: 1.5rem;
+.eventStatus {
+  color: #93c5fd;
+  font-size: 0.9rem;
+}
+
+.eventTitle {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  line-height: 1.2;
+}
+
+.eventDate {
+  margin: 0 0 1rem;
+  color: rgba(247, 241, 234, 0.72);
+}
+
+.eventBody {
+  margin-bottom: 1.25rem;
+}
+
+.eventBody :global(h1) {
+  display: none;
+}
+
+.eventBody :global(h2) {
+  margin-top: 1.2rem;
+  margin-bottom: 0.7rem;
+  font-family: var(--ifm-font-family-base);
   font-size: 0.95rem;
-  opacity: 0.7;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #93c5fd;
+}
+
+.eventBody :global(p:first-child) {
+  display: none;
+}
+
+.eventBody :global(p),
+.eventBody :global(li) {
+  color: rgba(247, 241, 234, 0.9);
+  line-height: 1.8;
+}
+
+.eventBody :global(ul) {
+  margin-bottom: 0;
+  padding-left: 1.15rem;
+}
+
+.eventActions {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.eventPrimary {
+  background: #fffaf4;
+  color: #1a1817;
+}
+
+.eventPrimary:hover {
+  color: #1a1817;
+}
+
+.eventSecondary {
+  border: 1px solid rgba(255, 250, 244, 0.18);
+  color: #fffaf4;
+}
+
+.eventSecondary:hover {
+  color: #fffaf4;
+  border-color: rgba(255, 250, 244, 0.3);
+}
+
+[data-theme='dark'] .sectionLabel {
+  border-color: rgba(255, 250, 244, 0.14);
+  background: rgba(255, 250, 244, 0.04);
+}
+
+[data-theme='dark'] .termChip {
+  color: #bfdbfe;
+}
+
+[data-theme='dark'] .heroLead,
+[data-theme='dark'] .noteText {
+  color: rgba(243, 237, 229, 0.8);
+}
+
+[data-theme='dark'] .secondaryLink,
+[data-theme='dark'] .noteCard {
+  border-color: rgba(255, 250, 244, 0.1);
+  background: rgba(255, 250, 244, 0.04);
+  color: #f3ede5;
+}
+
+[data-theme='dark'] .noteCard {
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.2);
 }
 
 @media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 3.5rem 1.5rem 3rem;
+  .heroSection {
+    padding: 3rem 0 2.5rem;
   }
 
-  .heroSubtitle {
-    font-size: 1rem;
+  .heroGrid {
+    grid-template-columns: 1fr;
   }
-}
 
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+  .heroTitle {
+    max-width: none;
+    font-size: clamp(2.5rem, 11vw, 4.2rem);
+  }
+
+  .noteGrid {
+    grid-template-columns: 1fr;
+  }
 }

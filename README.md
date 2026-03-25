@@ -39,3 +39,17 @@ GIT_USER=<Your GitHub username> yarn deploy
 ```
 
 If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+
+## 利用可能なコマンド一覧
+
+### 基本コマンド
+- `npm run start` - 開発サーバーを起動（ホットリロード対応）
+- `npm run build` - 本番用ビルドを生成
+- `npm run deploy` - GitHub Pages にデプロイ
+
+### その他のコマンド
+- `npm run serve` - ビルド後のサイトをローカルで確認
+- `npm run clear` - Docosaurus のキャッシュをクリア
+- `npm run typecheck` - TypeScript の型チェック
+- `npm run write-translations` - 多言語化用の翻訳ファイルを生成
+- `npm run write-heading-ids` - Markdown の見出し ID を自動生成

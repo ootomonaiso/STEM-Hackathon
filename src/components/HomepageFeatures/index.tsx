@@ -1,55 +1,59 @@
-﻿import type {ReactNode} from 'react';
-import clsx from 'clsx';
+import type {ReactNode} from 'react';
+import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 
 type FeatureItem = {
+  id: string;
+  label: string;
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
-  description: ReactNode;
+  description: string;
+  href: string;
+  tone: 'paper' | 'ink' | 'accent';
 };
 
 const FeatureList: FeatureItem[] = [
   {
+    id: '01',
+    label: 'Entry',
     title: '参加の手引き',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
-    description: (
-      <>
-        申し込みから当日までの流れを整理しています。初参加でも迷わない構成にしています。
-      </>
-    ),
+    description: '申し込みから当日までの流れを、必要な順に追える入口です。',
+    href: '/docs/handbook/registration',
+    tone: 'paper',
   },
   {
+    id: '02',
+    label: 'Practice',
     title: 'DevDojo',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
-    description: (
-      <>
-        GitHub・Git・生成AIの基礎を日本語で学べる、初心者向けの学習エリアです。
-      </>
-    ),
+    description: 'GitHub・Git・生成AIの基礎を、ハッカソン準備の文脈で学べます。',
+    href: '/docs/devdojo/github-git/basics',
+    tone: 'ink',
   },
   {
-    title: '履歴アーカイブ',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
-    description: (
-      <>
-        過去の開催記録と成果をまとめ、次の挑戦につなげます。年度別に整理しています。
-      </>
-    ),
+    id: '03',
+    label: 'Review',
+    title: 'ハッカソン履歴',
+    description: '過去大会の雰囲気やテーマを見て、今回のアイデアの参考にできます。',
+    href: '/docs/history/2025/hackathon-spring',
+    tone: 'accent',
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function FeatureCard({id, label, title, description, href, tone}: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+    <article className={`${styles.card} ${styles[tone]}`}>
+      <div className={styles.cardMeta}>
+        <span className={styles.cardId}>{id}</span>
+        <span className={styles.cardLabel}>{label}</span>
       </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
-      </div>
-    </div>
+      <Heading as="h2" className={styles.cardTitle}>
+        {title}
+      </Heading>
+      <p className={styles.cardDescription}>{description}</p>
+      <Link className={styles.cardLink} to={href}>
+        このカテゴリを開く
+      </Link>
+    </article>
   );
 }
 
@@ -57,9 +61,15 @@ export default function HomepageFeatures(): ReactNode {
   return (
     <section className={styles.features}>
       <div className="container">
-        <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
+        <div className={styles.header}>
+          <p className={styles.eyebrow}>Quick Paths</p>
+          <Heading as="h2" className={styles.title}>
+            情報を探すのではなく、次の行動をすぐ選べるように。
+          </Heading>
+        </div>
+        <div className={styles.grid}>
+          {FeatureList.map(feature => (
+            <FeatureCard key={feature.id} {...feature} />
           ))}
         </div>
       </div>
